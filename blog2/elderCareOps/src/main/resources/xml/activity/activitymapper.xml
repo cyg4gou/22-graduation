@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.root.mapper.ActivityMapper">
+
+    <resultMap id="articleMap" type="cn.root.bean.entity.Activity">
+        <id column="id" property="id" />
+        <result column="title" property="title"/>
+        <result column="body_id" property="bodyId"/>
+        <result column="view_count" property="viewCount"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="expire_time" property="expireTime"/>
+    </resultMap>
+
+    <select id="listAllActivityTitle" resultMap="articleMap">
+        select id,title,body_id,view_count,create_time,create_by,expire_time
+        from activity
+        where if_delete = 0
+        order by update_time desc
+    </select>
+
+
+
+
+</mapper>
